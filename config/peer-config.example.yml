@@ -1,0 +1,32 @@
+# IN ORDER TO USE THIS CONFIG FILE, RENAME IT AND REMOVE THE ".example" PART OF THE FILENAME!
+#
+# CrewLink peer to peer connection configuration.
+#
+# This file lets you modify how CrewLink connects players to each other.
+#
+# CrewLink uses peer to peer connections to establish voice calls between players. This means that every player has to
+# be able to connect to every other player some way or another in order for CrewLink to work. Below you can tweak the
+# mechanisms CrewLink uses to establish peer to peer connections.
+
+# Force CrewLink to only work through TURN servers. This is great if you want to protect the IP addresses of players
+# as no direct connection will be made. If set to true, a TURN server is required.
+forceRelayOnly: false
+
+# STUN servers
+# A part of establishing peer to peer connections is finding out the IP address of each participant and letting people 
+# connect directly to each other. A stun server, simply put, allows you to find out your public IP address and port, 
+# which is something other participants need to know in order to connect to you. By default CrewLink will use one of
+# Google's STUN servers.
+stunServers:
+  - url: 'stun:stun.l.google.com:19302'
+
+# TURN servers:
+#     Sometimes you find yourself behind a strict firewall or NAT that flat out rejects peer to peer connections. TURN
+#     servers provide a way around this by acting as a middleman between peers, relaying all traffic sent between them.
+#     TURN servers are the best way to guarantee that everyone can use CrewLink. By default CrewLink comes with no TURN
+#     servers, so you will need to set one up. Beware that TURN servers take up a lot of bandwidth as they have to relay
+#     ALL traffic between peers that use them.
+# turnServers:
+#   - url: 'turn:example.com'
+#     username: 'TurnUsername'
+#     credential: 'TurnPassword'

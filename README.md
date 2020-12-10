@@ -28,6 +28,8 @@
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
+  * [Fixing Connection Issues](#fixing-connection-issue)
+  * [Protecting Player IP Addresses](#protecting-player-ip-addresses)
 * [Contributing](#contributing)
 * [License](#license)
 
@@ -44,7 +46,7 @@ To get up and running quickly, you can deploy to Heroku using the button below
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-This will deploy an instance of the crewlink-server. You can get the URL of your server by using the app name that you gave when you launched the app on heroku and appending `.herokuapp.com`. You can also find the URL of your server by going to "Settings", scrolling down to "Domains", and removing the `https://` and trailing slash from the url. Using this URL, follow step 4 of the [installation instructions](https://github.com/ottomated/CrewLink-server#manual-installation) to connect your client to your server instance.
+This will deploy an instance of the crewlink-server. You can get the URL of your server by using the app name that you gave when you launched the app on heroku and appending `.herokuapp.com`. You can also find the URL of your server by going to "Settings", scrolling down to "Domains". Using this URL, follow step 4 of the [installation instructions](https://github.com/ottomated/CrewLink-server#manual-installation) to connect your client to your server instance.
 
 ## Docker Quickstart
 
@@ -101,7 +103,22 @@ yarn install
 ```JS
 yarn start
 ```
-4. Copy your server's IP and port into CrewLink settings. Make sure everyone in your lobby is using the same server.
+4. Copy your server URL into CrewLink settings. Make sure everyone in your lobby is using the same server.
+
+### Fixing Connection Issues
+
+CrewLink-server should work out of the box for most people. You may, however, come across people who are unable to hear 
+other people, no matter what they try. This could be because of a NAT or firewall that is preventing peer to peer
+connections. In this case you may want to set up your own relay server to act as a middleman for your voice traffic.
+CrewLink needs a specific type of server for this called a TURN server. As of yet CrewLink does not come with one by
+default. 
+
+You can configure a TURN server by creating a file called ``peer-config.yml`` in the config folder. Use the
+provided example as a template. A good, open source TURN server implementation is [Coturn](https://github.com/coturn/coturn).
+
+### Protecting Player IP Addresses
+A relay server may also be desirable in case you want to prevent CrewLink players from detecting the IP addresses of
+everyone in the same Among Us room using CrewLink. Check the section above on how to set one up.
 
 <!-- CONTRIBUTING -->
 ## Contributing
